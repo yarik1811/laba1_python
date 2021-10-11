@@ -1,11 +1,10 @@
-import os
-import sys
-import zipfile
-import http
-import shutil
-import requests
-import hashlib
-import re
+import os   #работа с директориями
+import sys  #для принудительного завершения  программы
+import zipfile  #работа с архивами
+import shutil   #для удаления директории если пользователь это пожелает ;)
+import requests #обращение к сайтам
+import hashlib  #хеширование данных
+import re   #работа с регулярками
 from prettytable import PrettyTable #чисто для красоты вывода :)
 
 # Задание №1
