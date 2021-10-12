@@ -195,11 +195,11 @@ while True:
     table = PrettyTable()
     table.field_names = ['Введенная страна: '+ target_country]
     country_find = False
+    table.add_row(['Если было найдено несколько стран, то они все будут выведены\n']) #для штуки если вдруг введут только первую букву страны  
     for line in print_country:
         if re.match(target_country, line) != None:
             table.add_row([line])  
             country_find = True
-            break
     if country_find == False:
         table.add_row(['Указанной страны нет в таблице :('])
     print(table)
