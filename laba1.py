@@ -1,11 +1,45 @@
-import os   #работа с директориями
-import sys  #для принудительного завершения  программы
-import zipfile  #работа с архивами
-import shutil   #для удаления директории если пользователь это пожелает ;)
-import requests #обращение к сайтам
-import hashlib  #хеширование данных
-import re   #работа с регулярками
-from prettytable import PrettyTable #чисто для красоты вывода :)
+#проверка на наличие модулей
+try:
+    import os   #работа с директориями
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install os')
+    sys.exit(0)
+
+try:
+    import sys  #для принудительного завершения  программы
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install sys')
+    sys.exit(0)
+try:
+    import zipfile  #работа с архивами
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install zipfile')
+    sys.exit(0)
+try:
+    import shutil   #для удаления директории если пользователь это пожелает ;)
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install shutil')
+    sys.exit(0)
+try:
+    import requests #обращение к сайтам
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install requests')
+    sys.exit(0)
+try:
+    import hashlib  #хеширование данных
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install hashlib')
+    sys.exit(0)
+try:
+    import re   #работа с регулярками
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install re')
+    sys.exit(0)
+try:
+    from prettytable import PrettyTable #чисто для красоты вывода :)
+except:
+    print('У вас не установлен модуль os. Проверьте его наличие и установите при помощи pip install prettytable')
+    sys.exit(0)
 
 # Задание №1
 #Создание новой директории, в которую будет распакован архив
