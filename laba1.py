@@ -173,25 +173,22 @@ for line in lines:
     #Извлечение данных из оставшихся столбцов. Данные из этих столбцов должны иметь числовое значение (прочерк можно заменить на -1).
     #Некоторые строки содержат пробелы в виде символа '\xa0'.
     col1_val = tmp_split[2]
-    col1_val=re.sub('\s|\xa0', ' ', col1_val)
-    col1_val=re.sub('[^0-9]', '', col1_val)
-    #print(col1_val)
-    
+    col1_val = re.sub('\s|\xa0', '', col1_val)
+    col1_val = re.sub('[^0-9]', '', col1_val)
+    # print(col1_val)
+
     col2_val = tmp_split[3]
-    col2_val=re.sub('\s|\xa0', ' ', col2_val)
-    col2_val=re.sub('[^0-9]', '', col2_val)
-    #print(col2_val)
-    
+    col2_val = re.sub('\s|\xa0', '', col2_val)
+    # print(col2_val)
+
     col3_val = tmp_split[4]
-    col3_val = re.sub('\s|\xa0', ' ', col3_val)
-    col3_val=re.sub('[^0-9]', '', col3_val)
-    #print(col3_val)
-    
-    col4_val = tmp_split[5] #активные случаи
-    col4_val=re.sub('\s', ' ', col4_val)
-    col4_val=re.sub('_', '-1', col4_val)
-    col4_val=re.sub('[^0-9]', '', col4_val)
-    #print(col4_val)   
+    col3_val = re.sub('\s|\xa0', '', col3_val)
+    # print(col3_val)
+
+    col4_val = tmp_split[5]  # активные случаи
+    col4_val = re.sub('\s|\xa0', '', col4_val)
+    col4_val = re.sub('_', '-1', col4_val)
+    # print(col4_val)   
 
     # Запись извлеченных данных в словарь
     result_dct[country_name] = {}
