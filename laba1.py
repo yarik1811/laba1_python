@@ -35,14 +35,29 @@ except:
     print('У вас не установлен модуль re. Проверьте его наличие и установите при помощи pip install re')
     sys.exit(0)
 try:
+    import wget # для загрузки архива с интернета, если он отсутствует
+except:
+    print('У вас не установлен модуль wget. Проверьте его наличие и установите при помощи pip install wget')
+    sys.exit(0)
+try:
     from prettytable import PrettyTable #чисто для красоты вывода :)
 except:
     print('У вас не установлен модуль prettytable. Проверьте его наличие и установите при помощи pip install prettytable')
     sys.exit(0)
 
+# проверка на наличие архива, если его нет, то он будет скачан
+if os.path.exists('zip_zip.zip') == False:
+    table = PrettyTable()
+    table.field_names = ['Info']
+    table.add_row(['Отсутствует архив "zip_zip.zip"'])
+    table.add_row(['Начинаю загрузку...'])
+    print(table)
+    url = 'https://github.com/yarik1811/laba1_python/blob/main/zip_zip.zip?raw=true'
+    wget.download(url, os.getcwd())
+zip_lib = os.path.abspath('zip_zip.zip') # заранее получаем расположение архива, ибо потом программа зайдёт в папку, и тогда лаба вообще сломается :(
+
 # Задание №1
 #Создание новой директории, в которую будет распакован архив
-zip_lib = os.path.abspath('zip_zip.zip')#заранее получаем расположение архива, ибо потом зайдёт в папку, и тогда лаба вообще сломается :(
 a = input('Введите имя папки в которую желаете распаковать архив: ')
 if os.path.exists(a) == True:   #проверка на существование директории с указанным именем
     choice = input('Папка с указанным уменем уже существует, желаете её удалить? (Y/N): ')
@@ -66,15 +81,7 @@ table.add_row(['Директория успешно создана', os.path.abs
 print(table)
 print('\n')
 
-
 #С помощью модуля zipfile извлечь содержимое архива в созданную директорию
-if os.path.exists(zip_lib) == False:
-    table = PrettyTable()
-    table.field_names = ['Ошибка!']
-    table.add_row(['Вам необходимо закинуть архив в директорию с .py файлом!'])
-    table.add_row(['Ошибка ниже - принудительный выход из программы.'])
-    print(table)
-    sys.exit(0)
 arch_file = zipfile.ZipFile(zip_lib) 
 os.chdir(a) #переход в директорию для распаковки
 arch_file.extractall()  #распаковка исходного архива в указанную директорию
