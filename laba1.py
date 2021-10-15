@@ -44,6 +44,13 @@ try:
 except:
     print('У вас не установлен модуль prettytable. Проверьте его наличие и установите при помощи pip install prettytable')
     sys.exit(0)
+try:
+    from tqdm import tqdm   # для создания progress_bar
+    from time import sleep  # для демонмтрации задержки progress_bar
+    import random   # для создания диапазона
+except:
+    print('У вас не установлен модуль tqdm, или time или random. Проверьте его наличие и установите при помощи pip install tqdm или time или random')
+    sys.exit(0)
 
 # проверка на наличие архива, если его нет, то он будет скачан
 if os.path.exists('zip_zip.zip') == False:
@@ -54,6 +61,8 @@ if os.path.exists('zip_zip.zip') == False:
     print(table)
     url = 'https://github.com/yarik1811/laba1_python/blob/main/zip_zip.zip?raw=true'
     wget.download(url, os.getcwd())
+    for i in tqdm(range(100), colour = 'green'):
+        sleep(random.uniform(0.01, 0.01))
 zip_lib = os.path.abspath('zip_zip.zip') # заранее получаем расположение архива, ибо потом программа зайдёт в папку, и тогда лаба вообще сломается :(
 
 # Задание №1
